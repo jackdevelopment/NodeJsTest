@@ -8,9 +8,14 @@ var connection = mysql.createConnection({
 connection.connect();
 connection.query('select * from table9', function(err, rows, fields) {
   if(err) throw err;
-  console.log(rows[0].column1);
-  console.log(rows[1].column1);
-  console.log(rows.length)
+  rows.forEach(function(item){
+     fields.forEach(function(field){
+         console.log(item[field.name]);
+     });
+     console.log("");
+  });
+
+
 });
 
 //var query = connection.query('select * from table9');
