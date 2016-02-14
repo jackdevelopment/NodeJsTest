@@ -13,6 +13,7 @@ var storage = multer.diskStorage({
 });
 
 var upload = multer({storage: storage});
+var router = require('./router/router');
 var app = express1();
 
 
@@ -23,7 +24,7 @@ app.listen(1337, function() {
    console.log('ready on port 1337');
 });
 
-app.get("/index.js", function(req, res){
+/*app.get("/index.js", function(req, res){
    res.render('index',{title: 'express'});
 
 });
@@ -32,11 +33,12 @@ app.get("/upload", function(req, res){
    res.render('upload',{
       title: 'file upload'
    });
-});
+});*/
 
-var cpUpload = upload.fields([{name: 'file1', maxCount: 1},{name: 'file2', maxCount: 1}])
+var cpUpload = upload.fields([{name: 'file1', maxCount: 1},{name: 'file2', maxCount: 1}]);
 
-app.post("/upload", cpUpload, function(req, res, next){
+router(app, cpUpload);
+/*app.post("/upload", cpUpload, function(req, res, next){
   // console.log(req.file);
    res.redirect('/upload');
-});
+});*/
