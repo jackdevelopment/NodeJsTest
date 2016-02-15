@@ -10,5 +10,11 @@ var router = function(app, cpUpload) {
   app.post("/upload", cpUpload, function(req, res, next) {
      res.redirect('/upload');
   });
+  app.get("/edit/:name", function(req, res) {
+     console.log(req.params.name);
+     res.render('edit',{
+        title: 'edit title'
+     });
+  });
 }
 module.exports = router;
